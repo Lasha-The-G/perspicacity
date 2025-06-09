@@ -367,6 +367,9 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+App title
+Mobile OS
+Bundle ID
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.june14;
 				PRODUCT_NAME = "$(TARGET_NAME)";

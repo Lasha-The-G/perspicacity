@@ -18,8 +18,6 @@ class AudioPageDemo extends StatefulWidget {
 }
 
 class _AudioPageDemoState extends State<AudioPageDemo> {
-  //final _storage = Hive.box('storage');
-
   String posturl = 'http://localhost:5000/tran';
 //   http://192.168.100.3:5000
 //   http://192.168.100.3:8000
@@ -235,32 +233,49 @@ class _AudioPageDemoState extends State<AudioPageDemo> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(currentFilePath),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                      onPressed: loadFile, child: Text("input File")),
-                  ElevatedButton(
-                      onPressed: request_param, child: Text("length setting")),
-                  ElevatedButton(
-                      onPressed: transcribe, child: Text("transcribe")),
-                  ElevatedButton(
-                      onPressed: summarize, child: Text("summarize")),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(onPressed: reformat, child: Text("reformat")),
-                  ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, '/mainPage'),
-                    child: Text("goto Main pages"),
+              SizedBox(
+                height: 35,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: loadFile, child: Text("input File")),
+                      ElevatedButton(
+                          onPressed: request_param,
+                          child: Text("length setting")),
+                      ElevatedButton(
+                          onPressed: transcribe, child: Text("transcribe")),
+                      ElevatedButton(
+                          onPressed: summarize, child: Text("summarize")),
+                    ],
                   ),
-                  ElevatedButton(
-                      onPressed: Provider.of<globals>(context, listen: false)
-                          .clearStorage,
-                      child: Text("clear storage"))
-                ],
+                ]),
+              ),
+              SizedBox(
+                height: 35,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: reformat, child: Text("reformat")),
+                        ElevatedButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/mainPage'),
+                          child: Text("goto Main pages"),
+                        ),
+                        ElevatedButton(
+                            onPressed:
+                                Provider.of<globals>(context, listen: false)
+                                    .clearStorage,
+                            child: Text("clear storage"))
+                      ],
+                    ),
+                  ],
+                ),
               ),
               ToggleButtons(
                 children: [
